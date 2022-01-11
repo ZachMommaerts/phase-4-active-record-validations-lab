@@ -5,8 +5,12 @@ class Post < ApplicationRecord
     validates :category, inclusion: { in: ["Fiction", 'Non-Fiction'] }
 
     clickbait_titles = [
-        
+        /Won't Believe/i,
+        /Secret/i,
+        /Top \d/i,
+        /Guess/i
     ] 
+
     def no_clickbait_titles
         if title == 'True Facts'
             errors.add(:title, 'No clickbait ya dingus')
